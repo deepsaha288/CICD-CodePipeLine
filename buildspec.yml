@@ -3,7 +3,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - $(aws ecr get-login --no-include-email --region ap-south-1)
   build:
     commands:
       - docker build -t health-check:latest .
@@ -11,7 +11,6 @@ phases:
   post_build:
     commands:
       - docker push 146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest
-      - printf '[{"name":ALB-health-check,"imageUri":"%s"}]' 
-      146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest > imagedefinitions.json
+      - printf '[{"name":ALB-health-check,"imageUri":"%s"}]' 146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json

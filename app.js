@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => res.send("this is new build code!"));
+app.get("/", (req, res) => res.send("its work good now !"));
 
 app.get("/health", (req, res) => {
   res.status(200);
