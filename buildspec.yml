@@ -6,11 +6,12 @@ phases:
       - $(aws ecr get-login --no-include-email --region us-east-1)
   build:
     commands:
-      - docker build -t youtube:latest .
-      - docker tag <IMAGE_NAME> <ECR_URL>
+      - docker build -t health-check:latest .
+      - docker tag health-check:latest 146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest
   post_build:
     commands:
-      - docker push <ECR_URL>
-      - printf '[{"name":<TASK_DEFINITION_NAME>,"imageUri":"%s"}]' <ECR_URL> > imagedefinitions.json
+      - docker push 146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest
+      - printf '[{"name":ALB-health-check,"imageUri":"%s"}]' 
+      146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
