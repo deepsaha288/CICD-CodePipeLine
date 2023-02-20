@@ -5,7 +5,7 @@ app.get("/", (req, res) => res.send("its work good now have a nice day wow!"));
 
 app.get("/health", (req, res) => {
   res.status(200);
-  res.send("healthy");
+  res.send("my load balancer is healthy now");
 });
 
 app.listen(3000, () => {
