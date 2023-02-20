@@ -1,6 +1,5 @@
 version: 0.2
 
-
 phases:
   pre_build:
     commands:
@@ -12,7 +11,7 @@ phases:
   post_build:
     commands:
       - docker push 146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest
-      - printf '[{"name":"%s","imageUri":"%s"}]' $ALB-health-check $146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest > imagedefinitions.json
+      - printf '[{"name":"%s","imageUri":"%s"}]' health-check 146747443241.dkr.ecr.ap-south-1.amazonaws.com/health-check:latest > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
 
