@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => res.send("its work relly good!"));
+app.get("/", (req, res) => res.send("its work using jenkins pipeline"));
 
 app.get("/health", (req, res) => {
   res.status(200);
